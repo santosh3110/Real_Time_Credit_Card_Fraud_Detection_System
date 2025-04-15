@@ -3,7 +3,7 @@ import sys
 from fraud_detection.logger.log import logging
 from fraud_detection.utils.util import read_yaml_file
 from fraud_detection.exception.exception_handler import CustomException
-from fraud_detection.entity.config_entity import DataIngestionConfig, DataValidationConfig
+from fraud_detection.entity.config_entity import DataIngestionConfig, DataValidationConfig, FeatureEngineeringConfig
 from fraud_detection.constant import *
 
 
@@ -55,6 +55,25 @@ class ConfigurationManager:
             logging.info(f"Data Validation Config: {response}")
             return response
 
+        except Exception as e:
+            raise CustomException(e, sys) from e
+        
+
+    def get_feature_engineering_config(self) -> FeatureEngineeringConfig:
+        try:
+            feature_engineering_config = self.configs_info['feature_engineering_config']
+            artifacts_dir = self.configs_info['artifacts_config']['artifacts_dir']
+            
+            engineered_data_dir = os.path.join(artifacts_dir, feature_engineering_config['engineered_data_dir'])
+            
+            response = FeatureEngineeringConfig(
+                engineered_data_dir=engineered_data_dir,
+                engineered_data_file=os.path.join(engineered_data_dir, feature_engineering_config['engineered_data_file'])
+            )
+            
+            logging.info(f"Feature Engineering Config: {response}")
+            return response
+            
         except Exception as e:
             raise CustomException(e, sys) from e
         
