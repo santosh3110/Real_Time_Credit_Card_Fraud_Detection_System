@@ -6,3 +6,7 @@ data_ingestion_config:
   dataset_dir: dataset
   ingested_dir: ingested_data
   raw_data_dir: raw_data
+
+data_validation_config:
+  clean_data_dir: clean_data
+  credit_card_fraud_transaction_csv_file: credit_card_fraud_transactions.csv

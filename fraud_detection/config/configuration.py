@@ -3,7 +3,7 @@ import sys
 from fraud_detection.logger.log import logging
 from fraud_detection.utils.util import read_yaml_file
 from fraud_detection.exception.exception_handler import CustomException
-from fraud_detection.entity.config_entity import DataIngestionConfig
+from fraud_detection.entity.config_entity import DataIngestionConfig, DataValidationConfig
 from fraud_detection.constant import *
 
 
@@ -31,6 +31,28 @@ class ConfigurationManager:
             )
 
             logging.info(f"Data Ingestion Config: {response}")
+            return response
+
+        except Exception as e:
+            raise CustomException(e, sys) from e
+        
+    def get_data_validation_config(self) -> DataValidationConfig:
+        try:
+            data_validation_config = self.configs_info['data_validation_config']
+            data_ingestion_config = self.configs_info['data_ingestion_config']
+            dataset_dir = data_ingestion_config['dataset_dir']
+            artifacts_dir = self.configs_info['artifacts_config']['artifacts_dir']
+            credit_card_fraud_transaction_csv_file = data_validation_config['credit_card_fraud_transaction_csv_file']
+
+            credit_card_fraud_transaction_csv_file_dir = os.path.join(artifacts_dir, dataset_dir, data_ingestion_config['ingested_dir'], credit_card_fraud_transaction_csv_file)
+            clean_data_path = os.path.join(artifacts_dir, dataset_dir, data_validation_config['clean_data_dir'])
+
+            response = DataValidationConfig(
+                clean_data_dir = clean_data_path,
+                credit_card_fraud_transaction_csv_file = credit_card_fraud_transaction_csv_file_dir,
+            )
+
+            logging.info(f"Data Validation Config: {response}")
             return response
 
         except Exception as e:

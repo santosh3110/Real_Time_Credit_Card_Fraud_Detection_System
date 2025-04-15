@@ -11,7 +11,8 @@ list_of_files = [
     
     # 🔹 COMPONENTS (Pipeline stages)
     f"{project_name}/components/__init__.py",
-    f"{project_name}/components/stage_01_data_ingestion.py",
+    f"{project_name}/components/stage_00_data_ingestion.py",
+    f"{project_name}/components/stage_01_data_validation.py",
     f"{project_name}/components/stage_02_feature_engineering.py",
     f"{project_name}/components/stage_03_model_training.py",
     f"{project_name}/components/stage_04_evaluation.py",

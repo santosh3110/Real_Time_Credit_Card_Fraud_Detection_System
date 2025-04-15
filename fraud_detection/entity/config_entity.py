@@ -1,5 +1,5 @@
 from collections import namedtuple
 
-DataIngestionConfig = namedtuple("DatasetConfig", ["dataset_download_url",
-                                                   "raw_data_dir",
-                                                   "ingested_dir"])
+DataIngestionConfig = namedtuple("DataIngestionConfig", ["dataset_download_url", "raw_data_dir", "ingested_dir"])
+
+DataValidationConfig = namedtuple("DataValidationConfig", ["clean_data_dir", "credit_card_fraud_transaction_csv_file"]) 
