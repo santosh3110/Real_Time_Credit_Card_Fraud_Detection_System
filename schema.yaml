@@ -1,0 +1,21 @@
+COLUMNS:
+  date: datetime64[ns]
+  hour: int32
+  day: int32
+  weekday: int32
+  age: int64
+  category: object
+  is_large_transaction: int32
+  log_amt: float64
+  lat: float64
+  long: float64
+  merch_lat: float64
+  merch_long: float64
+  distance_km: float64
+  gender: int64
+  job: object
+  city_pop: int64
+  is_fraud: int64
+
+TARGET_COLUMN:
+  name: is_fraud
