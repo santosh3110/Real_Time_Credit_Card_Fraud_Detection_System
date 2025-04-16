@@ -3,7 +3,8 @@ import sys
 from fraud_detection.logger.log import logging
 from fraud_detection.utils.util import read_yaml_file
 from fraud_detection.exception.exception_handler import CustomException
-from fraud_detection.entity.config_entity import DataIngestionConfig, DataValidationConfig, FeatureEngineeringConfig
+from fraud_detection.entity.config_entity import (DataIngestionConfig, DataValidationConfig,
+                                                   FeatureEngineeringConfig, ModelTrainingConfig)
 from fraud_detection.constant import *
 
 
@@ -74,6 +75,29 @@ class ConfigurationManager:
             logging.info(f"Feature Engineering Config: {response}")
             return response
             
+        except Exception as e:
+            raise CustomException(e, sys) from e
+        
+        
+    def get_model_training_config(self) -> ModelTrainingConfig:
+        """
+        Get Model Training Configuration
+        """
+        try:
+            model_training_config = self.configs_info['model_training_config']
+            artifacts_dir = self.configs_info['artifacts_config']['artifacts_dir']
+            model_dir = os.path.join(artifacts_dir, model_training_config['model_dir'])
+            model_file = os.path.join(model_dir, model_training_config['model_file'])
+            
+            response = ModelTrainingConfig(
+                model_dir=model_dir,
+                model_file=model_file,
+                target_column=model_training_config['target_column']
+            )
+
+            logging.info(f"Model Training Config: {response}")
+            return response
+        
         except Exception as e:
             raise CustomException(e, sys) from e
         

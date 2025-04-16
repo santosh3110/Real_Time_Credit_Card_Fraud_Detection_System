@@ -173,6 +173,11 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-artifacts/
+
+artifacts/dataset
 
 research/catboost_info
+
+artifacts/engineered_data
+
+catboost_info

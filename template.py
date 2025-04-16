@@ -15,7 +15,7 @@ list_of_files = [
     f"{project_name}/components/stage_01_data_validation.py",
     f"{project_name}/components/stage_02_feature_engineering.py",
     f"{project_name}/components/stage_03_model_training.py",
-    f"{project_name}/components/stage_04_evaluation.py",
+    f"{project_name}/components/stage_04_model_evaluation.py",
 
     # 🔹 CONFIGURATION
     f"{project_name}/config/__init__.py",

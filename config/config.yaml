@@ -14,3 +14,8 @@ data_validation_config:
 feature_engineering_config:
   engineered_data_dir: engineered_data
   engineered_data_file: engineered_data.csv
+
+model_training_config:
+  model_dir: saved_models
+  model_file: trained_model.cbm
+  target_column: is_fraud
