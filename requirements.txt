@@ -4,5 +4,7 @@ numpy
 pyYAML
 geopy
 shap
+confluent_kafka
+faker
 
 -e .
