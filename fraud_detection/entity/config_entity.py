@@ -7,3 +7,5 @@ DataValidationConfig = namedtuple("DataValidationConfig", ["clean_data_dir", "cr
 FeatureEngineeringConfig = namedtuple("FeatureEngineeringConfig", ["engineered_data_dir", "engineered_data_file"])
 
 ModelTrainingConfig = namedtuple("ModelTrainingConfig", ["model_dir", "model_file", "target_column"])
+
+ModelEvaluationConfig = namedtuple("ModelEvaluationConfig", ["evaluation_dir", "evaluation_file", "shap_dir", "shap_file"])

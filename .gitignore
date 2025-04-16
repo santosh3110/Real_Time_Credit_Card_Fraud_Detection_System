@@ -180,4 +180,6 @@ research/catboost_info
 
 artifacts/engineered_data
 
+artifacts/reports/evaluation/reports/shap/shap_values.pkl
+
 catboost_info

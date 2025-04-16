@@ -4,7 +4,7 @@ from fraud_detection.logger.log import logging
 from fraud_detection.utils.util import read_yaml_file
 from fraud_detection.exception.exception_handler import CustomException
 from fraud_detection.entity.config_entity import (DataIngestionConfig, DataValidationConfig,
-                                                   FeatureEngineeringConfig, ModelTrainingConfig)
+                                                   FeatureEngineeringConfig, ModelTrainingConfig, ModelEvaluationConfig)
 from fraud_detection.constant import *
 
 
@@ -85,10 +85,10 @@ class ConfigurationManager:
         """
         try:
             model_training_config = self.configs_info['model_training_config']
-            artifacts_dir = self.configs_info['artifacts_config']['artifacts_dir']
-            model_dir = os.path.join(artifacts_dir, model_training_config['model_dir'])
+            # artifacts_dir = self.configs_info['artifacts_config']['artifacts_dir']
+            model_dir = model_training_config['model_dir']
             model_file = os.path.join(model_dir, model_training_config['model_file'])
-            
+
             response = ModelTrainingConfig(
                 model_dir=model_dir,
                 model_file=model_file,
@@ -100,4 +100,28 @@ class ConfigurationManager:
         
         except Exception as e:
             raise CustomException(e, sys) from e
+        
+        
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        """
+        Get Model Evaluation Configuration
+        """
+        try:
+            model_evaluation_config = self.configs_info['model_evaluation_config']
+            artifacts_dir = self.configs_info['artifacts_config']['artifacts_dir']
+            evaluation_dir = os.path.join(artifacts_dir, model_evaluation_config['evaluation_dir'])
+            evaluation_file = os.path.join(evaluation_dir, model_evaluation_config['evaluation_file'])
+            shap_dir = os.path.join(evaluation_dir, model_evaluation_config['shap_dir'])
+            shap_file = os.path.join(shap_dir, model_evaluation_config['shap_file'])
+            response = ModelEvaluationConfig(
+                evaluation_dir=evaluation_dir,
+                evaluation_file=evaluation_file,
+                shap_dir=shap_dir,
+                shap_file=shap_file
+            )
+            logging.info(f"Model Evaluation Config: {response}")
+            return response
+        except Exception as e:
+            raise CustomException(e, sys) from e
+
         

@@ -19,3 +19,10 @@ model_training_config:
   model_dir: saved_models
   model_file: trained_model.cbm
   target_column: is_fraud
+
+model_evaluation_config:
+  evaluation_dir: reports/evaluation
+  evaluation_file: evaluation_metrics.csv
+  shap_dir: reports/shap
+  shap_file: shap_values.pkl
+
