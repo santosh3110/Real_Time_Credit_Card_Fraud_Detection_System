@@ -8,6 +8,9 @@ confluent_kafka
 faker
 pyYAML
 pymongo
-
+streamlit
+plotly
+catboost
+python-dotenv
 
 -e .
