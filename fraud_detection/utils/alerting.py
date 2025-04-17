@@ -36,7 +36,7 @@ Credit Card Number  : {transaction.get('cc_num')}
 Amount              : ${transaction.get('amt')}
 Merchant            : {transaction.get('merchant')}
 Category            : {transaction.get('category')}
-Location            : {transaction.get('location')}
+Location            : {transaction.get('street')}, {transaction.get('city')}, {transaction.get('state')}
 ---------------------------
 Please review this transaction immediately.
 """
