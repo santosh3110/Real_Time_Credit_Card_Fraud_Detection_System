@@ -6,5 +6,8 @@ geopy
 shap
 confluent_kafka
 faker
+pyYAML
+pymongo
+
 
 -e .
