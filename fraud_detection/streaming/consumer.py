@@ -5,7 +5,6 @@ from pymongo import MongoClient
 from confluent_kafka import Consumer
 from dotenv import load_dotenv
 from catboost import CatBoostClassifier, Pool
-
 from fraud_detection.streaming.feature_transformer import transform_transaction
 
 # Load env
