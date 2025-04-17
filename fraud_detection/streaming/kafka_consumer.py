@@ -4,7 +4,7 @@ import pandas as pd
 from pymongo import MongoClient
 from confluent_kafka import Consumer
 from dotenv import load_dotenv
-from catboost import CatBoostClassifier
+from catboost import CatBoostClassifier, Pool
 
 from fraud_detection.streaming.feature_transformer import transform_transaction
 
@@ -39,10 +39,6 @@ model = CatBoostClassifier()
 model.load_model(model_path)
 print("✅ Model loaded from", model_path)
 
-# Set categorical features explicitly
-model.cat_features = ["category", "job", "gender"]
-print("Categorical features:", model.cat_features)
-
 # === Main Loop ===
 try:
     while True:
@@ -66,9 +62,17 @@ try:
             print(features_df.dtypes)
             print(model.get_params())
 
+            # Clean categorical dtypes
+            categorical_cols = ['category', 'gender', 'job']
+            for col in categorical_cols:
+                if col in features_df.columns:
+                    features_df[col] = features_df[col].astype(str)
+
+            # Wrap the features in a CatBoost Pool
+            features_pool = Pool(data=features_df, cat_features=categorical_cols)
 
             # Predict
-            prediction = int(model.predict(features_df)[0])
+            prediction = int(model.predict(features_pool)[0])
 
             txn["is_fraud"] = prediction
 
