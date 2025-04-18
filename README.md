@@ -2,11 +2,11 @@
 A real-time machine learning pipeline for detecting fraudulent credit card transactions using CatBoost, Kafka, MongoDB and Streamlit. This system leverages CatBoost classifier to detect fraudulent transactions as they occur. This model simulates streaming transactions using faker library, classifies them on-the-fly, provides an immediate email alert using SMTP PORT and SMTP SERVER, stores them in MongoDB and visualizes fraud patterns on a live dashboard.
 
 
-[![Python](https://img.shields.io/badge/Python-3.11-blue)](https://www.python.org/)\n
-[![Kafka](https://img.shields.io/badge/Kafka-3.0-orange)](https://kafka.apache.org/)\n
-[![MongoDB](https://img.shields.io/badge/MongoDB-6.0-green)](https://www.mongodb.com/)\n
-[![CatBoost](https://img.shields.io/badge/CatBoost-1.7-yellow)](https://catboost.ai/)\n
-[![Streamlit](https://img.shields.io/badge/Streamlit-2.0-blue)](https://streamlit.io/)\n
+[![Python](https://img.shields.io/badge/Python-3.11-blue)](https://www.python.org/)
+[![Kafka](https://img.shields.io/badge/Kafka-3.0-orange)](https://kafka.apache.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-6.0-green)](https://www.mongodb.com/)
+[![CatBoost](https://img.shields.io/badge/CatBoost-1.7-yellow)](https://catboost.ai/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-2.0-blue)](https://streamlit.io/)
 
 
 
@@ -17,6 +17,7 @@ A real-time machine learning pipeline for detecting fraudulent credit card trans
 ## 📌 Table of Contents
 
 - [📸 Demo Screenshots](#-demo-screenshots)
+- [📁 Dataset](#-dataset)
 - [📦 Features](#-features)
 - [🧱 Project Architecture](#-project-architecture)
 - [🚀 Getting Started](#-getting-started)
@@ -36,6 +37,32 @@ A real-time machine learning pipeline for detecting fraudulent credit card trans
 - Filter view
 - Fraud map/trend view
 - Kafka stream logs
+
+---
+
+## 📁 Dataset
+
+The dataset used for training and evaluation is sourced from Hugging Face and contains synthetic credit card transaction data. Below are the key details:
+
+    Source: The dataset is obtained from Hugging Face (dazzle-nu/CIS435-CreditCardFraudDetection).
+
+    Features:
+        cc_num: Credit card number.
+        amt: Transaction amount.
+        trans_date_trans_time: Date and time of the transaction.
+        dob: Date of birth of the cardholder.
+        lat and long: Latitude and longitude of the transaction location.
+        merch_lat and merch_long: Latitude and longitude of the merchant location.
+        is_fraud: Binary target variable indicating whether the transaction is fraudulent (1 for fraud, 0 for legitimate).
+
+    Preprocessing:
+        The dataset undergoes several preprocessing steps, including handling missing values, converting data types, and creating new features such as age, is_large_transaction, and log_amt.
+        The trans_date_trans_time and dob are converted to datetime formats.
+        The distance_km feature is calculated using the Haversine distance formula to determine the distance between the customer and merchant locations.
+        The is_large_transaction feature is created to indicate transactions exceeding a certain amount threshold.
+        The log_amt feature is the logarithmic transformation of the transaction amount to handle skewness.
+
+This dataset is well-suited for training a fraud detection model due to its comprehensive feature set and realistic transaction scenarios.
 
 ---
 
@@ -126,7 +153,19 @@ Or open directly:
   - **Accuracy**: 99.94%
   - **ROC AUC**: 99.94%
   - **Log Loss**: 0.0020
+
 - SHAP-based interpretability with feature importance ranking
+![alt text](image.png)
+
+- Geographical heatmap of fraud transactions by location generated using folim maps
+
+### Fraud Heatmap
+<iframe src="https://github.com/santosh3110/Real_Time_Credit_Card_Fraud_Detection_System/blob/main/research/fraud_heatmap.html" 
+        height="500" 
+        width="100%" 
+        frameborder="0" 
+        allowfullscreen>
+</iframe>
 
 📂 Outputs:
 - `trained_model.cbm`
@@ -153,22 +192,41 @@ This runs:
 ## 📁 Directory Structure
 
 ```bash
-fraud_detection/
-│
-├── components/               # All modular ML pipeline stages
-├── config/                   # Config & constants
-├── streaming/                # Kafka consumer, transformer, producer
-├── data_generator/           # Faker-based Kafka producer
-├── utils/                    # Utility and alerting modules
-├── pipeline/                 # Training and streaming pipelines
-├── saved_models/             # Trained model
-├── artifacts/                # Data: raw, cleaned, engineered
-├── logs/                     # Pipeline logs
-├── reports/                  # Evaluation metrics & SHAP
-├── app.py                    # Streamlit dashboard
-├── main.py                   # Entry point
-└── requirements.txt
-```
+.
+├── app.py                      # Streamlit-based dashboard
+├── artifacts/                 # Project artifacts
+│   ├── dataset/               # Raw and processed datasets
+│   ├── engineered_data/        # Feature-engineered data
+│   └── reports/                # Evaluation reports and SHAP values
+├── build/                      # Build directory
+├── catboost_info/               # CatBoost training information
+├── config/                     # Configuration files
+├── dist/                       # Distribution package
+├── fraud_detection/             # Core project package
+│   ├── components/             # Pipeline components
+│   │   ├── stage_00_data_ingestion.py  # Data ingestion
+│   │   ├── stage_01_data_validation.py # Data validation
+│   │   ├── stage_02_feature_engineering.py # Feature engineering
+│   │   ├── stage_03_model_training.py    # Model training
+│   │   └── stage_04_model_evaluation.py # Model evaluation
+│   ├── config/                 # Configuration files
+│   ├── constant/               # Project constants
+│   ├── data_generator/         # Data generation utilities
+│   ├── entity/                 # Entity classes
+│   ├── exception/               # Custom exceptions
+│   ├── logger/                  # Logging utilities
+│   ├── pipeline/               # Training and streaming pipelines
+│   ├── streaming/              # Streaming components
+│   └── utils/                 # Utility functions
+├── logs/                       # Log files
+├── main.py                     # Main execution file
+├── README.md                    # This file
+├── requirements.txt           # Project dependencies
+├── research/                    # Research and experimentation
+├── saved_models/               # Trained models
+├── schema.yaml                 # Data schema
+├── setup.py                    # Setup file
+└── template.py                  # Template file```
 
 ---
 
