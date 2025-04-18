@@ -163,18 +163,19 @@ Or open directly:
 
 ---
 
-## Training Pipeline
+Training Pipeline
+
 Run the training pipeline:
-```bash
+bash
+
 python fraud_detection/pipeline/training_pipeline.py
 
 or
 bash
 
 python main.py
-    
 
-This will:
+This will execute the following steps:
 
     Ingest data
     Validate data
