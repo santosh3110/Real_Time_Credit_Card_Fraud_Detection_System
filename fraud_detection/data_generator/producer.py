@@ -6,8 +6,6 @@ import os
 import json
 import random
 import time
-from datetime import datetime
-
 
 # Load secrets from .env
 load_dotenv()
@@ -31,32 +29,42 @@ categories = ['misc_net', 'grocery_pos', 'entertainment', 'gas_transport',
 
 genders = ['M', 'F']
 
+def generate_us_latitude():
+    """Generate a random latitude within the contiguous United States."""
+    return round(random.uniform(24.396308, 49.384358), 6)
+
+def generate_us_longitude():
+    """Generate a random longitude within the contiguous United States."""
+    return round(random.uniform(-124.848974, -66.93457), 6)
+
 def generate_transaction():
     """
-    Generate a transaction with fake data.
+    Generate a transaction with fake data relevant to the USA.
     
     Returns:
         dict: A dictionary containing the transaction data.
     """
-    user_lat = fake.latitude()
-    user_long = fake.longitude()
+    # Generate user coordinates within the USA
+    user_lat = generate_us_latitude()
+    user_long = generate_us_longitude()
+    
+    # Generate merchant coordinates within the USA
+    merch_lat = generate_us_latitude()
+    merch_long = generate_us_longitude()
+    
+    # Ensure merchant coordinates are different from user coordinates
+    while (user_lat, user_long) == (merch_lat, merch_long):
+        merch_lat = generate_us_latitude()
+        merch_long = generate_us_longitude()
+    
     trans_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     dob = fake.date_of_birth(minimum_age=18, maximum_age=90)
-
-    # Generate merchant coordinates
-    merch_lat = fake.latitude()
-    merch_long = fake.longitude()
-
-    # Check if user and merchant coordinates are the same
-    while (user_lat, user_long) == (merch_lat, merch_long):
-        merch_lat = fake.latitude()
-        merch_long = fake.longitude()
-
+    
     transaction_data = {
         "transaction_id": fake.uuid4(),
         "trans_date_trans_time": trans_time,
         "cc_num": fake.credit_card_number(),
-        "merchant": "fraud_"+fake.company(),
+        "merchant": "fraud_" + fake.company(),
         "category": random.choice(categories),
         "amt": float(round(random.uniform(1, 30000), 1)),
         "first": fake.first_name(),
@@ -94,4 +102,3 @@ if __name__ == "__main__":
         )
         producer.flush()
         time.sleep(10)
- 

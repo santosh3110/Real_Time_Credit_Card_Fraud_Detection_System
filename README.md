@@ -35,11 +35,19 @@ A real-time machine learning pipeline for detecting fraudulent credit card trans
 > 🔻screenshots:
 - Dashboard homepage
 
-![alt text](image-2.png)
+![alt text](image-8.png)
 
 - Filter view
 
-![alt text](image-3.png)
+![alt text](image-9.png)
+
+- Fraud Location Map
+
+![alt text](image-7.png)
+
+- Key Fraud Metrics
+
+![alt text](image-10.png)
 
 - Kafka stream logs
 
