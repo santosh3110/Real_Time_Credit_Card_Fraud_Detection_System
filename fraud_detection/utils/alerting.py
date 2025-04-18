@@ -1,5 +1,3 @@
-# fraud_detection/streaming/alerting.py
-
 import time
 import smtplib
 from dotenv import load_dotenv
