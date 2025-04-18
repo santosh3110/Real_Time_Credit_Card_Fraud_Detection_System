@@ -163,25 +163,26 @@ Or open directly:
 
 ---
 
-Training Pipeline
+## 🔄Training Pipeline
 
 Run the training pipeline:
-bash
 
+```bash
 python fraud_detection/pipeline/training_pipeline.py
-
+```
 or
-bash
 
+```bash
 python main.py
+```
 
 This will execute the following steps:
 
-    Ingest data
-    Validate data
-    Engineer features
-    Train the model
-    Evaluate the model
+Ingest data
+Validate data
+Engineer features
+Train the model
+Evaluate the model
 
 ---
 
