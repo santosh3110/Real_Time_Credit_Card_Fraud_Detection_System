@@ -164,16 +164,15 @@ Or open directly:
 ---
 
 ## Training Pipeline
+Run the training pipeline:
+```bash
+python fraud_detection/pipeline/training_pipeline.py
 
-    Run the training pipeline:
-    bash
+or
+bash
 
-python training_pipeline.py
-
-            or
-    bash
-
-python main.py        
+python main.py
+    
 
 This will:
 
