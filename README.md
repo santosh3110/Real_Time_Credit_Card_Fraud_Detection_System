@@ -1,10 +1,12 @@
 # Real-Time Credit Card Fraud Detection System
 A real-time machine learning pipeline for detecting fraudulent credit card transactions using CatBoost, Kafka, MongoDB and Streamlit. This system leverages CatBoost classifier to detect fraudulent transactions as they occur. This model simulates streaming transactions using faker library, classifies them on-the-fly, provides an immediate email alert using SMTP PORT and SMTP SERVER, stores them in MongoDB and visualizes fraud patterns on a live dashboard.
-[![Python](https://img.shields.io/badge/Python-3.11-blue)](https://www.python.org/)
-[![Kafka](https://img.shields.io/badge/Kafka-3.0-orange)](https://kafka.apache.org/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-6.0-green)](https://www.mongodb.com/)
-[![CatBoost](https://img.shields.io/badge/CatBoost-1.7-yellow)](https://catboost.ai/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-2.0-blue)](https://streamlit.io/)
+
+
+[![Python](https://img.shields.io/badge/Python-3.11-blue)](https://www.python.org/)\n
+[![Kafka](https://img.shields.io/badge/Kafka-3.0-orange)](https://kafka.apache.org/)\n
+[![MongoDB](https://img.shields.io/badge/MongoDB-6.0-green)](https://www.mongodb.com/)\n
+[![CatBoost](https://img.shields.io/badge/CatBoost-1.7-yellow)](https://catboost.ai/)\n
+[![Streamlit](https://img.shields.io/badge/Streamlit-2.0-blue)](https://streamlit.io/)\n
 
 
 
