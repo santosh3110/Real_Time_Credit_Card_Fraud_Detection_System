@@ -178,11 +178,11 @@ python main.py
 
 This will execute the following steps:
 
-Ingest data
-Validate data
-Engineer features
-Train the model
-Evaluate the model
+- Ingest data
+- Validate data
+- Engineer features
+- Train the model
+- Evaluate the model
 
 ---
 
