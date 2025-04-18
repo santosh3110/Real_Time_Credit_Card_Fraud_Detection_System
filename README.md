@@ -32,11 +32,28 @@ A real-time machine learning pipeline for detecting fraudulent credit card trans
 
 ## 📸 Demo Screenshots
 
-> 🔻 Add screenshots here for:
+> 🔻screenshots:
 - Dashboard homepage
+
+![alt text](image-2.png)
+
 - Filter view
-- Fraud map/trend view
+
+![alt text](image-3.png)
+
 - Kafka stream logs
+
+![alt text](image-4.png)
+
+- Fraud and Non Fraud Database stored in MongoDB:
+
+![alt text](image-5.png)
+
+- Sample mail alerts sent:
+
+![alt text](image-6.png)
+
+
 
 ---
 
@@ -146,6 +163,28 @@ Or open directly:
 
 ---
 
+## Training Pipeline
+
+    Run the training pipeline:
+    bash
+
+python training_pipeline.py
+
+            or
+    bash
+
+python main.py        
+
+This will:
+
+    Ingest data
+    Validate data
+    Engineer features
+    Train the model
+    Evaluate the model
+
+---
+
 ## 🧠 Model & Evaluation
 
 - Model: `CatBoostClassifier`
@@ -160,12 +199,7 @@ Or open directly:
 
 - Geographical heatmap of fraud transactions by location generated using folium maps
 
-    <iframe src="https://github.com/santosh3110/Real_Time_Credit_Card_Fraud_Detection_System/blob/main/fraud_heatmap.html" 
-            height="500" 
-            width="100%" 
-            frameborder="0" 
-            allowfullscreen>
-    </iframe>
+![alt text](image-1.png)
 
 
 📂 Outputs:
