@@ -160,7 +160,7 @@ Or open directly:
 
 - Geographical heatmap of fraud transactions by location generated using folium maps
 
-    <iframe src="https://github.com/santosh3110/Real_Time_Credit_Card_Fraud_Detection_System/blob/main/research/fraud_heatmap.html" 
+    <iframe src="https://github.com/santosh3110/Real_Time_Credit_Card_Fraud_Detection_System/blob/main/fraud_heatmap.html" 
             height="500" 
             width="100%" 
             frameborder="0" 
@@ -251,7 +251,7 @@ This runs:
 
 ## 📜 License
 
-This project is licensed under the MIT License.  
+This project is licensed under the Apache 2.0 License.  
 Feel free to use, contribute, or fork!
 
 ---
@@ -261,3 +261,10 @@ Feel free to use, contribute, or fork!
 - Thanks to **CatBoost** for blazing-fast tree boosting
 - Thanks to **Streamlit** for effortless dashboards
 - Inspired by real-world streaming data and fraud challenges
+
+---
+
+## 📬 Contact
+
+Santosh Kumar Guntupalli
+[GitHub](https://github.com/santosh3110) | [LinkedIn](https://www.linkedin.com/in/santosh-guntupalli-05b285250/)
