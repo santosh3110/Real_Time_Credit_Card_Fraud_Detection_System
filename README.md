@@ -155,17 +155,18 @@ Or open directly:
   - **Log Loss**: 0.0020
 
 - SHAP-based interpretability with feature importance ranking
+
 ![alt text](image.png)
 
-- Geographical heatmap of fraud transactions by location generated using folim maps
+- Geographical heatmap of fraud transactions by location generated using folium maps
 
-### Fraud Heatmap
-<iframe src="https://github.com/santosh3110/Real_Time_Credit_Card_Fraud_Detection_System/blob/main/research/fraud_heatmap.html" 
-        height="500" 
-        width="100%" 
-        frameborder="0" 
-        allowfullscreen>
-</iframe>
+    <iframe src="https://github.com/santosh3110/Real_Time_Credit_Card_Fraud_Detection_System/blob/main/research/fraud_heatmap.html" 
+            height="500" 
+            width="100%" 
+            frameborder="0" 
+            allowfullscreen>
+    </iframe>
+
 
 📂 Outputs:
 - `trained_model.cbm`
@@ -226,7 +227,9 @@ This runs:
 ├── saved_models/               # Trained models
 ├── schema.yaml                 # Data schema
 ├── setup.py                    # Setup file
-└── template.py                  # Template file```
+└── template.py                  # Template file\
+
+```
 
 ---
 
